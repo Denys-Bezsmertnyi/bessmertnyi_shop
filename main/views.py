@@ -121,12 +121,12 @@ class ProductPurchase(DetailView, FormView):
                 user.money -= total_price
                 user.save()
 
-                messages.success(self.request, 'Покупка прошла успешно.')
+                messages.success(self.request, 'Successful Purchase!')
                 return HttpResponseRedirect(self.success_url)
             else:
-                messages.error(self.request, 'Недостаточно средств на счету.')
+                messages.error(self.request, 'Not Enough money')
         else:
-            messages.error(self.request, 'Недостаточное количество товара на складе.')
+            messages.error(self.request, 'We dont have that much in stock')
 
         return super().form_valid(form)
 
